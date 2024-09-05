@@ -4,7 +4,6 @@ from recipe.models import RecipeCategory, Recipe, RecipeLike
 
 User = get_user_model()
 
-#t
 class RecipeCategoryModelTest(TestCase):
 
     def test_string_representation(self):
