@@ -11,6 +11,10 @@ WORKDIR /app
 # Copy the requirements file to the container
 COPY requirements.txt /app/
 
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip install psycopg2
+
 # Install dependencies
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
