@@ -13,6 +13,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     category = serializers.PrimaryKeyRelatedField(queryset=RecipeCategory.objects.all())
     total_number_of_likes = serializers.SerializerMethodField()
     total_number_of_bookmarks = serializers.SerializerMethodField()
+    picture = serializers.ImageField()
 
     class Meta:
         model = Recipe
