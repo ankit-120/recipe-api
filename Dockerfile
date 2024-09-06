@@ -18,6 +18,9 @@ RUN apt-get update \
 # Install dependencies
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
+# Create logs directory
+RUN mkdir -p /app/config/logs
+
 # Copy the Django project code to the container
 COPY . /app/
 
