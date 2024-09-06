@@ -19,7 +19,7 @@ app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
     'send_daily_likes_notification': {
-        'task': 'recipe.management.commands.send_daily_likes_notification',
-        'schedule': crontab(hour=7, minute=0),  # Run every day at 9 AM
+        'task': 'recipe.tasks.send_daily_likes_notification',
+        'schedule': crontab(hour=3, minute=8),
     },
 }
