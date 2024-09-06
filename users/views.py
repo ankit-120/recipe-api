@@ -10,6 +10,9 @@ from recipe.models import Recipe
 from .models import Profile
 from recipe.serializers import RecipeSerializer
 from . import serializers
+import logging
+
+logger = logging.getLogger('django')
 
 
 User = get_user_model()
@@ -23,6 +26,7 @@ class UserRegisterationAPIView(GenericAPIView):
     serializer_class = serializers.UserRegisterationSerializer
 
     def post(self, request, *args, **kwargs):
+        logger.info('creating user')
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
@@ -43,6 +47,7 @@ class UserLoginAPIView(GenericAPIView):
     serializer_class = serializers.UserLoginSerializer
 
     def post(self, request, *args, **kwargs):
+        logger.info('user login')
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data

@@ -222,15 +222,26 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'django-celery.log',
+            'filename': os.path.join(BASE_DIR, 'logs', 'debug.log'),
+            'formatter': 'verbose',
         },
         'console': {
-            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
+            'formatter': 'simple',
         },
     },
     'loggers': {
@@ -239,10 +250,15 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
-        'celery': {
+        'recipe': {  # Example for your app-specific logging
             'handlers': ['file', 'console'],
             'level': 'DEBUG',
-            'propagate': True,
+            'propagate': False,
+        },
+        'users': {  # Example for your app-specific logging
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': False,
         },
     },
 }

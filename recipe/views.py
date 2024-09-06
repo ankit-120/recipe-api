@@ -7,6 +7,10 @@ from .models import Recipe, RecipeLike
 from .serializers import RecipeLikeSerializer, RecipeSerializer
 from .permissions import IsAuthorOrReadOnly
 
+import logging
+
+logger = logging.getLogger('django')
+
 
 class RecipeListAPIView(generics.ListAPIView):
     """
@@ -27,6 +31,7 @@ class RecipeCreateAPIView(generics.CreateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def perform_create(self, serializer):
+        logger.info('creating recipe')
         serializer.save(author=self.request.user)
 
 
@@ -47,6 +52,7 @@ class RecipeLikeAPIView(generics.CreateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, pk):
+        logger.info('liked recipe')
         recipe = get_object_or_404(Recipe, id=self.kwargs['pk'])
         new_like, created = RecipeLike.objects.get_or_create(
             user=request.user, recipe=recipe)
