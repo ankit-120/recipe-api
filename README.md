@@ -76,10 +76,12 @@ docker run recipe-app python manage.py migrate
 ```bash
 docker run recipe-app python manage.py collectstatic --noinput
 ```
+
 ## Running the Application
 ```bash
 docker run -p 8000:8000 recipe-app
 ```
+
 ##Testing the application
 ```bash
 coverage run --source='.' manage.py test
