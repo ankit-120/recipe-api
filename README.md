@@ -88,12 +88,13 @@ coverage html
 ```
 
 ##Logging
+```bash
 Logging is configured in the settings.py file with the following settings:
 
 Logs are written to logs/debug.log.
 Logs are output to the console.
 Log messages will be available in both the log file and the console output.
-
+```
 
 ##Live Version
 The live version of the application is hosted at: https://recipe-api-4ytq.onrender.com
