@@ -10,8 +10,7 @@ This is a Django-based recipe application designed for production deployment. Th
 4. Running the Application
 5. Testing the Application
 6. Logging
-7. Deployment
-8. Live Version
+7. Live Version
 
 ---
 
