@@ -103,3 +103,15 @@ The live version of the application is hosted at: https://recipe-api-4ytq.onrend
 
 For Redis and Postgres Aiven cloud platform is used.
 
+
+
+##Use this command to start celery worker
+```bash
+celery -A config worker --loglevel=info -P eventlet
+```
+
+##Use this command to start celery beat(Scheduler which will send email notification everyday)
+```bash
+celery -A config beat --loglevel=info
+```
+
